@@ -1,4 +1,6 @@
-var conquistadors, guards, harvesters, builders;
+var incrementor = 0,
+    conquistadors, guards, harvesters, builders
+    ;
 
 module.exports = function() {
 
@@ -15,18 +17,17 @@ module.exports = function() {
     return Game.creeps[creep].memory.role === 'builder';
   });
 
-  if (Game.spawns.Spawn1.energy >== 200) {
-    if ( !conquistador.length ) {
-      Game.spawns.Spawn1.createCreep( [MOVE, MOVE, CARRY, CARRY], 'Conquistador' + (conquistadors.length + 1), {role: 'conquistador'} );
+  if (Game.spawns.Spawn1.energy >= 200) {
+    if ( !conquistadors.length ) {
+      Game.spawns.Spawn1.createCreep( [MOVE, WORK, CARRY, CARRY], 'Conquistador' + incrementor++, {role: 'conquistador'} );
     }
   }
 
-  if (Game.spawns.Spawn1.energy >== 300) {
-
-    if ( (builders.length + 2) > harvesters.length ) {
-      Game.spawns.Spawn1.createCreep( [WORK, WORK, CARRY, MOVE], 'Harvester' + (harvesters.length + 1), {role: 'harvester'} );
+  if (Game.spawns.Spawn1.energy >= 300) {
+    if ( builders.length >= (harvesters.length / 4) || !Game.rooms.sim.find(FIND_CONSTRUCTION_SITES).length ) {
+      Game.spawns.Spawn1.createCreep( [WORK, WORK, CARRY, MOVE], 'Harvester' + incrementor++, {role: 'harvester'} );
     } else {
-      Game.spawns.Spawn1.createCreep( [WORK, WORK, CARRY, MOVE], 'Builder' + (builders.length + 1), {role: 'builder'} );
+      Game.spawns.Spawn1.createCreep( [WORK, WORK, CARRY, MOVE], 'Builder' + incrementor++, {role: 'builder'} );
     }
   }
 };
