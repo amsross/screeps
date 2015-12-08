@@ -3,6 +3,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-env');
   grunt.loadNpmTasks('grunt-screeps');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.initConfig({
     env: {
@@ -20,6 +21,16 @@ module.exports = function(grunt) {
       dist: {
         src: ['dist/*.js']
       }
+    },
+    watch: {
+      scripts: {
+        files: ['dist/*.js'],
+        tasks: [
+          'env:dev',
+          'setenv',
+          'screeps'
+        ]
+      }
     }
   });
   
@@ -31,6 +42,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', [
     'env:dev',
     'setenv',
-    'screeps'
+    'screeps',
+    'watch'
   ]);
 };
