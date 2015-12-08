@@ -1,0 +1,24 @@
+{
+  "name": "screeps",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amsross/screeps.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amsross/screeps/issues"
+  },
+  "homepage": "https://github.com/amsross/screeps",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-env": "^0.4.4",
+    "grunt-screeps": "^1.2.0"
+  }
+}

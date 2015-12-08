@@ -5,6 +5,7 @@ module.exports = function (creep) {
     // get more energy
     if (Game.spawns.Spawn1.transferEnergy(creep) == ERR_NOT_IN_RANGE) {
       creep.moveTo(Game.spawns.Spawn1);
+    }
   } else {
     // build something
     var targets = creep.room.find(FIND_CONSTRUCTION_SITES);

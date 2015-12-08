@@ -1,5 +1,5 @@
 var incrementor = 0,
-    conquistadors, guards, harvesters, builders
+    conquistadors, guards, harvesters, builders,
     MAX_BUILDERS = 2,
     MAX_HARVESTERS = 8,
     MAX_CONQUISTADORS = 1,
