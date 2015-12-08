@@ -1,4 +1,3 @@
-var harvesters, builders;
 var spawner = require('spawner');
 
 var harvester = require('harvester');
