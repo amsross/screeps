@@ -1,7 +1,7 @@
 var incrementor = 0,
     conquistadors, guards, harvesters, builders,
-    MAX_BUILDERS = 2,
-    MAX_HARVESTERS = 6,
+    MAX_BUILDERS = 8,
+    MAX_HARVESTERS = 8,
     MAX_CONQUISTADORS = 1,
     MAX_GUARDS = 2
     ;
@@ -22,7 +22,7 @@ module.exports = function() {
   });
 
   if ((Game.spawns.Spawn1 || {}).energy >= 300) {
-    if ( builders.length >= (harvesters.length / 4) || !Game.rooms.sim.find(FIND_CONSTRUCTION_SITES).length ) {
+    if ( (builders.length / harvesters.length) > 0.33 || !Game.rooms.sim.find(FIND_CONSTRUCTION_SITES).length ) {
       if ( harvesters.length < MAX_HARVESTERS ) {
         incrementor++;
         Game.spawns.Spawn1.createCreep( [WORK, WORK, CARRY, MOVE], 'Harvester' + incrementor, {role: 'harvester'} );
@@ -39,6 +39,13 @@ module.exports = function() {
     if ( conquistadors.length < MAX_CONQUISTADORS && harvesters.length == (MAX_HARVESTERS / 2)) {
       incrementor++;
       Game.spawns.Spawn1.createCreep( [MOVE, WORK, CARRY, CARRY], 'Conquistador' + incrementor, {role: 'conquistador'} );
+    }
+  }
+
+  if ((Game.spawns.Spawn1 || {}).energy >= 270) {
+    if ( guards.length < MAX_GUARDS * 4 ) {
+      incrementor++;
+      Game.spawns.Spawn1.createCreep( [MOVE, MOVE, ATTACK, ATTACK, TOUGH, TOUGH], 'Guard' + incrementor, {role: 'guard'} );
     }
   }
 
