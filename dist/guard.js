@@ -1,13 +1,17 @@
 
 module.exports = function(creep) {
-  var targets = creep.room.find(FIND_HOSTILE_CREEPS);
-  targets = targets.filter(function(target) {
-    return target.owner.username !== 'Source Keeper';
+  var targets = creep.room.find(FIND_HOSTILE_CREEPS, {
+    filter: function(target) {
+      return target.owner.username !== 'Source Keeper';
+    }
   });
 
   if (targets.length) {
-    if (creep.attack(targets[0]) == ERR_NOT_IN_RANGE) {
-      creep.moveTo(targets[0]);
+    var target = creep.pos.findClosestByRange(targets);
+    if (creep.attack(target) == ERR_NOT_IN_RANGE) {
+      creep.moveTo(target);
     }
+  } else {
+    creep.moveTo(21, 24);
   }
 }
