@@ -4,6 +4,7 @@ var harvester = require('harvester');
 var builder = require('builder');
 var guard = require('guard');
 var conquistador = require('conquistador');
+var healer = require('healer');
 var archer = require('archer');
 
 module.exports.loop = function () {
@@ -26,6 +27,10 @@ module.exports.loop = function () {
 
     if (creep.memory.role == 'archer') {
       archer(creep);
+    }
+
+    if (creep.memory.role == 'healer') {
+      healer(creep);
     }
 
     if (creep.memory.role == 'conquistador') {
