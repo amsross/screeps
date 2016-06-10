@@ -8,7 +8,7 @@ module.exports = function (creep) {
       creep.moveByPath( path );
     }
   } else {
-    if (creep.transferEnergy(Game.spawns.Spawn1) == ERR_NOT_IN_RANGE) {
+    if (creep.transfer(Game.spawns.Spawn1, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
       var path = creep.pos.findPathTo(Game.spawns.Spawn1);
       creep.moveByPath( path );
     }
