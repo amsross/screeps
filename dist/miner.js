@@ -8,8 +8,10 @@ module.exports = function (creep) {
       return target.energy > (target.energyCapacity / 2);
     }
   });
-  if (creep.harvest(targets[1]) == ERR_NOT_IN_RANGE) {
-    var path = creep.pos.findPathTo(targets[1]);
-    creep.moveByPath( path );
+  if (targets.length) {
+    if (creep.harvest(targets[1]) == ERR_NOT_IN_RANGE) {
+      var path = creep.pos.findPathTo(targets[1]);
+      creep.moveByPath( path );
+    }
   }
 }
