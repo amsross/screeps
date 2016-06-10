@@ -27,7 +27,7 @@ module.exports = function() {
       return Game.spawns.Spawn1.createCreep( [TOUGH, TOUGH, TOUGH, TOUGH, TOUGH, MOVE, MOVE, RANGED_ATTACK], 'archer' + now, {role: 'archer'} );
     } else if ( spawnDeciderByRole( "conquistador" ) ) {
       return Game.spawns.Spawn1.createCreep( [MOVE, WORK, WORK, CARRY], 'conquistador' + now, {role: 'conquistador'} );
-    } else if ( spawnDeciderByRole( "builder" ) && Game.rooms.sim.find(FIND_CONSTRUCTION_SITES).length ) {
+    } else if ( spawnDeciderByRole( "builder" ) && Game.spawns.Spawn1.pos.findClosestByRange(FIND_CONSTRUCTION_SITES).length ) {
       return Game.spawns.Spawn1.createCreep( [WORK, WORK, CARRY, MOVE], 'builder' + now, {role: 'builder'} );
     } else {
       return Game.spawns.Spawn1.createCreep( [MOVE, WORK, WORK, CARRY], 'conquistador' + now, {role: 'conquistador'} );
